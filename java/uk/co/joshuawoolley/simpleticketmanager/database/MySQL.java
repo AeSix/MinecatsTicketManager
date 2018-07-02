@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.database;
+package com.aesix.minecatsticketmanager.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import org.bukkit.plugin.Plugin;
 
-import uk.co.joshuawoolley.simpleticketmanager.database.Database;
+import com.aesix.minecatsticketmanager.database.Database;
 
 /**
  * Connects to and uses a MySQL database
