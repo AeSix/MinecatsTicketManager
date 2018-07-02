@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager;
+package com.aesix.minecatsticketmanager;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,16 +12,16 @@ import org.bukkit.configuration.file.YamlConfiguration;
 */
 public class Messages {
 	
-	private SimpleTicketManager plugin;
+	private MinecatsTicketManager plugin;
 	public HashMap<String, String> messageData;
 	
 	/**
 	 * Constuctor for all Messages
 	 * 
 	 * @param instance
-	 * 			SimpleTicketManager instance
+	 * 			MinecatsTicketManager instance
 	 */
-	public Messages(SimpleTicketManager instance) {
+	public Messages(MinecatsTicketManager instance) {
 		plugin = instance;
 		messageData = new HashMap<String, String>();
 	}
