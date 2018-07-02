@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.command;
+package com.aesix.minecatsticketmanager.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -7,12 +7,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import uk.co.joshuawoolley.simpleticketmanager.SimpleTicketManager;
-import uk.co.joshuawoolley.simpleticketmanager.ticketsystem.TicketManager;
+import com.aesix.minecatsticketmanager.SimpleTicketManager;
+import com.aesix.minecatsticketmanager.ticketsystem.TicketManager;
 
 public class CommandHandler implements CommandExecutor {
 
-	private SimpleTicketManager plugin;
+	private MinecatsTicketManager plugin;
 	private TicketManager manager;
 
 	private String tag = "";
@@ -22,11 +22,11 @@ public class CommandHandler implements CommandExecutor {
 	 * Command Handler to handle all commands
 	 * 
 	 * @param instance
-	 * 			SimpleTicketManager instance
+	 * 			MinecatsTicketManager instance
 	 * @param manager
 	 * 			TicketManager instance
 	 */
-	public CommandHandler(SimpleTicketManager instance, TicketManager manager) {
+	public CommandHandler(MinecatsTicketManager instance, TicketManager manager) {
 		plugin = instance;
 		this.manager = manager;
 		tag = ChatColor.translateAlternateColorCodes('&',plugin.messageData.get("tag"));
