@@ -14,7 +14,7 @@ adminmessages: true
 #Display to all staff when a ticket has been closed
 #Set to true if you want staff to get notices
 #Set to false if you don't want notices on close
-closenotice: true
+closenotice: false
 
 #Support for multiple servers
 #Uses server name from server.properties
@@ -24,18 +24,18 @@ bungeecord: false
 players: false
 
 #Maximum number of tickets a player can claim
-maxtickets: 10
+maxtickets: 3
 
 #How often the database should be updated
 #The amount of seconds you want
-updateTime: 600
+updateTime: 60
 
 #Set to true if you wish to use MySQL
-mysql: false
+mysql: true
 
 #Connection details for MySQL
-hostname: 
-port: 
-database: 
-username: 
-password: 
+hostname: 127.0.0.1
+port: 3306
+database: minecatsTickets
+username: WillyBillyChangeAName
+password: 1-2-3-4-5-andChangeTheCombinationOnMyLuggage
