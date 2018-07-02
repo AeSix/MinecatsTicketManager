@@ -1,9 +1,9 @@
-package uk.co.joshuawoolley.simpleticketmanager.ticketsystem;
+package com.aesix.minecatsticketmanager.ticketsystem;
 
 import java.util.Date;
 import java.util.HashMap;
 
-import uk.co.joshuawoolley.simpleticketmanager.enums.TicketStates;
+import com.aesix.minecatsticketmanager.enums.TicketStates;
 
 /**
 * @author Josh Woolley
