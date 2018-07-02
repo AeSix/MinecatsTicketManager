@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.enums;
+package com.aesix.minecatsticketmanager.enums;
 
 /**
  * States for all tickets
