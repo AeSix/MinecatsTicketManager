@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.listeners;
+package com.aesix.minecatsticketmanager.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -7,15 +7,15 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import uk.co.joshuawoolley.simpleticketmanager.SimpleTicketManager;
-import uk.co.joshuawoolley.simpleticketmanager.ticketsystem.TicketManager;
+import com.aesix.minecatsticketmanager.SimpleTicketManager;
+import com.aesix.minecatsticketmanager.ticketsystem.TicketManager;
 
 /**
  * @author Josh Woolley
  */
 public class PlayerJoin implements Listener{
 	
-	private SimpleTicketManager plugin;
+	private MinecatsTicketManager plugin;
 	private TicketManager manager;
 	
 	private String tag = "";
@@ -28,7 +28,7 @@ public class PlayerJoin implements Listener{
 	 * @param manager
 	 * 			TicketManager instance
 	 */
-	public PlayerJoin (SimpleTicketManager instance, TicketManager manager) {
+	public PlayerJoin (MinecatsTicketManager instance, TicketManager manager) {
 		plugin = instance;
 		this.manager = manager;
 		tag = ChatColor.translateAlternateColorCodes('&',plugin.messageData.get("tag"));
