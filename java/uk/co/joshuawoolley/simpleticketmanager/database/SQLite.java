@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.database;
+package com.aesix.minecatsticketmanager.database;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.logging.Level;
 
 import org.bukkit.plugin.Plugin;
 
-import uk.co.joshuawoolley.simpleticketmanager.database.Database;
+import com.aesix.minecatsticketmanager.database.Database;
 
 /**
  * Connects to and uses a SQLite database
