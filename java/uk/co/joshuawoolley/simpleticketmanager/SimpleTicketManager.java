@@ -1,4 +1,7 @@
+/* originally:
 package uk.co.joshuawoolley.simpleticketmanager;
+*/
+package com.aesix.minecatsticketmanager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -7,17 +10,24 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+/* changing for my OCD/sanity
 import uk.co.joshuawoolley.simpleticketmanager.command.CommandHandler;
 import uk.co.joshuawoolley.simpleticketmanager.database.MySQL;
 import uk.co.joshuawoolley.simpleticketmanager.database.Queries;
 import uk.co.joshuawoolley.simpleticketmanager.database.SQLite;
 import uk.co.joshuawoolley.simpleticketmanager.listeners.PlayerJoin;
 import uk.co.joshuawoolley.simpleticketmanager.ticketsystem.TicketManager;
-
+*/
+import com.aesix.minecatsticketmanager.command.CommandHandler;
+import com.aesix.minecatsticketmanager.database.MySQL;
+import com.aesix.minecatsticketmanager.database.Queries;
+import com.aesix.minecatsticketmanager.database.SQLite;
+import com.aesix.minecatsticketmanager.listeners.PlayerJoin;
+import com.aesix.minecatsticketmanager.ticketsystem.TicketManager;
 /**
  * @author Josh Woolley
  */
-public class SimpleTicketManager extends JavaPlugin {
+public class MinecatsTicketManager extends JavaPlugin {
 	
 	public HashMap<String, String> messageData = new HashMap<String, String>();
 	private Connection connection = null;
@@ -28,7 +38,7 @@ public class SimpleTicketManager extends JavaPlugin {
 	 * Enable method
 	 */
 	public void onEnable() {
-		getLogger().info("Simple Ticket Manager is starting up. This may take a while!");
+		getLogger().info("Minecats Ticket Manager is starting up. This may take a while!");
 
 		this.saveDefaultConfig();
 		
@@ -70,12 +80,13 @@ public class SimpleTicketManager extends JavaPlugin {
 			e.printStackTrace();
 		}
 		this.getCommand("report").setExecutor(new CommandHandler(this, manager));
+		this.getCommand("submit").setExecutor(new CommandHandler(this, manager));
 		this.getCommand("ticket").setExecutor(new CommandHandler(this, manager));
 		PluginManager pm = this.getServer().getPluginManager();
 		pm.registerEvents(new PlayerJoin(this, manager), this);
 		manager.startTask();
 		
-		getLogger().info("Simple Ticket Managers has been successfully enabled!");
+		getLogger().info("Minecats Ticket Managers has been enabled!");
 	}
 	
 	/**
@@ -88,7 +99,7 @@ public class SimpleTicketManager extends JavaPlugin {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		getLogger().info("Simple Ticket Manager has been disabled");
+		getLogger().info("Minecats Ticket Manager has been disabled");
 	}
 	
 	/**
