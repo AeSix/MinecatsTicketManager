@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.ticketsystem;
+package com.aesix.minecatsticketmanager.ticketsystem;
 
 import static java.lang.Math.round;
 
@@ -18,17 +18,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import uk.co.joshuawoolley.simpleticketmanager.SimpleTicketManager;
-import uk.co.joshuawoolley.simpleticketmanager.database.Queries;
-import uk.co.joshuawoolley.simpleticketmanager.enums.TicketStates;
-import uk.co.joshuawoolley.simpleticketmanager.events.SimpleTicketEvent;
+import com.aesix.minecatsticketmanager.MinecatsTicketManager;
+import com.aesix.minecatsticketmanager.database.Queries;
+import com.aesix.minecatsticketmanager.enums.TicketStates;
+import com.aesix.minecatsticketmanager.events.MinecatsTicketEvent;
 
 /**
 * @author Josh Woolley
 */
 public class TicketManager {
 	
-	private SimpleTicketManager plugin;
+	private SMinecatsTicketManager plugin;
 	private Queries query;
 	
 	private int currentTicketId = 1;
@@ -47,11 +47,11 @@ public class TicketManager {
 	 * Create manager to control Tickets
 	 * 
 	 * @param plugin
-	 * 			Main SimpleTicketManager instance
+	 * 			Main MinecatsTicketManager instance
 	 * @param query
 	 * 			Queries object to call database queries
 	 */
-	public TicketManager(SimpleTicketManager plugin, Queries query, int maxTickets) {
+	public TicketManager(MinecatsTicketManager plugin, Queries query, int maxTickets) {
 		this.plugin = plugin;
 		this.query = query;
 		this.maxTickets = maxTickets;
@@ -100,7 +100,7 @@ public class TicketManager {
 				p.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("adminUpdate"))));
 			}
 		}
-                plugin.getServer().getPluginManager().callEvent(new SimpleTicketEvent("create", newTicket));
+                plugin.getServer().getPluginManager().callEvent(new MinecatsTicketEvent("create", newTicket));
 	}
 	
 	/**
@@ -152,7 +152,7 @@ public class TicketManager {
 				commentsToUpdate.add(ticket);
 				ticketId = ticket.getTicketId();
 				sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("createComment"))));
-	                        plugin.getServer().getPluginManager().callEvent(new SimpleTicketEvent("comment", ticket));
+	                        plugin.getServer().getPluginManager().callEvent(new MinecatsTicketEvent("comment", ticket));
 			} else {
 				sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("commentOnlyYourTickets"))));
 			}
@@ -188,7 +188,7 @@ public class TicketManager {
 							successful = query.setClosed(ticket.getClosedBy(), ticket.getAssignedTo(), ticket.getTicketId(), ticket.getClosedDate().getTime());
 						}
 						if (!successful) {
-							Bukkit.getLogger().severe("[SimpleTicketManager] There was a problem with updating 1 ticket to the database");
+							Bukkit.getLogger().severe("[MinecatsTicketManager] There was a problem with updating 1 ticket to the database");
 						}
 						it.remove();
 						noneUpdated = 1;
@@ -231,9 +231,9 @@ public class TicketManager {
 				if (noneUpdated == 0) {
 					query.keepConnectionAlive();
 				} else if (noneUpdated == 1) {
-					Bukkit.getLogger().info("[SimpleTicketManager] Database has sucessfully updated");
+					Bukkit.getLogger().info("[MinecatsTicketManager] Database has sucessfully updated");
 				} else {
-					Bukkit.getLogger().info("[SimpleTicketManager] New tickets/comments have been added to the server");
+					Bukkit.getLogger().info("[MinecatsTicketManager] New tickets/comments have been added to the server");
 				}
 			}
 		};
@@ -265,7 +265,7 @@ public class TicketManager {
 					ticketsToUpdate.add(ticket);
 					increaseClaimedAmount(player);
 					sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("claimTicket"))));
-                                        plugin.getServer().getPluginManager().callEvent(new SimpleTicketEvent("claim", ticket));
+                                        plugin.getServer().getPluginManager().callEvent(new MinecatsTicketEvent("claim", ticket));
 				} else {
 					sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("maxTickets"))));
 				}
@@ -309,7 +309,7 @@ public class TicketManager {
 						for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 							if (p.hasPermission("ticket.admin")) {
 								p.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkPlayer(checkMessages(plugin.messageData.get("closeNotice")), player)));
-                                                                plugin.getServer().getPluginManager().callEvent(new SimpleTicketEvent("close", ticket));
+                                                                plugin.getServer().getPluginManager().callEvent(new MinecatsTicketEvent("close", ticket));
 							}
 						}
 					}
@@ -340,7 +340,7 @@ public class TicketManager {
 				ticket.setState(TicketStates.OPEN);
 				ticketsToUpdate.add(ticket);
 				sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("unclaimTicket"))));
-                                plugin.getServer().getPluginManager().callEvent(new SimpleTicketEvent("unclaim", ticket));
+                                plugin.getServer().getPluginManager().callEvent(new MinecatsTicketEvent("unclaim", ticket));
 			} else {
 				sender.sendMessage(tag + ChatColor.translateAlternateColorCodes('&', checkMessages(plugin.messageData.get("alreadyUnclaimed"))));
 			}
@@ -743,7 +743,7 @@ public class TicketManager {
 				it.remove();
 			}
 		}
-		Bukkit.getLogger().info("[SimpleTicketManager] Database has been successfully updated");
+		Bukkit.getLogger().info("[MinecatsTicketManager] Database has been successfully updated");
 	}
 	
 	private Ticket getTicket(int id) {
