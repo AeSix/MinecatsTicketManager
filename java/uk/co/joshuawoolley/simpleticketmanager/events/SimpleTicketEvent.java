@@ -1,10 +1,10 @@
-package uk.co.joshuawoolley.simpleticketmanager.events;
+package com.aesix.minecatsticketmanager.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import uk.co.joshuawoolley.simpleticketmanager.ticketsystem.Ticket;
+import com.aesix.minecatsticketmanager.Ticket;
 
-public class SimpleTicketEvent extends Event {
+public class MinecatsTicketEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
     
