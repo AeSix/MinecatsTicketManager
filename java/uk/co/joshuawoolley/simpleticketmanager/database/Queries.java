@@ -1,4 +1,4 @@
-package uk.co.joshuawoolley.simpleticketmanager.database;
+package com.aesix.minecatsticketmanager.database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
