@@ -6,17 +6,25 @@ commands:
   report:
     description: Commands to report players
     usage: /<command> [reason] [description]
-    permission: report.use
+    permission: minecats.report.use
+  submit:
+    description: Commands to submit entries
+    usage: /submit [option]
+    permission: minecats.submit.use
   ticket:
     description: Commands to look at report
     usage: /<command> [option] [ticket id]
-    permission: ticket.use
+    permission: minecats.ticket.use
+
 
 permissions:
-  report.use:
+  minecats.report.use:
     description: Gives access to do reports
     default: true
-  ticket.view:
+  minecats.submit.use:
+    description: Allows access to entry submissions
+    default: op
+  minecats.ticket.view:
     description: Gives access to view reports
     children:
        ticket.view.open: true
@@ -24,45 +32,45 @@ permissions:
        ticket.view.assigned.all: true
        ticket.view.closed: true
        ticket.view.closed.all: true
-  ticket.view.open:
+  minecats.ticket.view.open:
      description: Gives access to view open reports
      default: op
-  ticket.view.assigned:
+  minecats.ticket.view.assigned:
      description: Gives access to view assigned reports
      default: op
-  ticket.view.assigned.all:
+  minecats.ticket.view.assigned.all:
      description: Gives access to view all assigned reports
      default: op
-  ticket.view.closed:
+  minecats.ticket.view.closed:
      description: Gives access to view closed reports
      default: op
-  ticket.view.closed.all:
+  minecats.ticket.view.closed.all:
      description: Gives access to view all closed reports
      default: op
-  ticket.info:
+  minecats.ticket.info:
     description: Gives access to view info on a certain ticket
     default: op
-  ticket.info.own:
+  minecats.ticket.info.own:
     description: Gives access to view your own tickets
     default: true
-  ticket.admin:
+  minecats.ticket.admin:
     description: Gives access to claim, close and unclaim tickets
     default: op
-  ticket.teleport:
+  minecats.ticket.teleport:
     description: Gives access to be able to teleport to tickets
     default: op
-  ticket.stats:
+  minecats.ticket.stats:
     description: Gives access to view ticket stats
     default: op
-  ticket.reload:
+  minecats.ticket.reload:
     description: Gives access to be able to reload the config and messages files
     default: op
-  ticket.comments:
+  minecats.ticket.comments:
     description: Gives access to add comments to all tickets
     default: true
-  ticket.comments.own:
+  minecats.ticket.comments.own:
     description: Gives access to add comments to your own tickets
     default: true
-  ticket.notify:
+  minecats.ticket.notify:
     description: Gives access to notifications about new tickets
     default: op
